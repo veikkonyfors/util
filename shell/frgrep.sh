@@ -3,7 +3,7 @@
 #  © VN/ViWare     23.12.2021           frgrep          Original 20th Century
 #
 # NAME
-#       frgrep, List files recursively containing given string
+#       frgrep, Recursively list files containing given string
 #
 # SYNOPSIS
 #       frgrep string [filename-regexp]
