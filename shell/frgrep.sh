@@ -1,6 +1,6 @@
 #!/bin/bash
 #*----------------------------------------------------------------------------
-#  © VN/ViWare     23.12.2021           frgrep          Original 20th Century
+#  © VN/ViWare     4.1.2022           frgrep.sh          Original 20th Century
 #
 # NAME
 #       frgrep, Recursively list files containing given string
@@ -36,8 +36,8 @@
 #----------------------------------------------------------------------------*/
 
 set -f
-str=${1:?"Usage: frgrep string [path]"}
+str=${1:?"Usage: frgrep string [filename-regexp] "}
 name=${2:-\*}
 
-find . -type f -name ${name} -exec file {} \; | grep 'ASCII text' | sed -e's/:.*$//' \
+ find . -type f -name ${name}  -exec grep -I -q . {} \; -print \
  | xargs -i{} perl -lne 'print "$ARGV: $_" if /'${str}'/' {}
