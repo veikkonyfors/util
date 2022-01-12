@@ -6,8 +6,8 @@ find . -type f  ! -name '*.swp' -exec grep -I -q . {} \; -print | \
   xargs -i{} perl -lne 'print "$ARGV: $_" if /ViWare/' {} | \
   grep -v \.metadata
 
-# List sizes of directories in the current tree.
-# Counts only size of flat files on the directory itself i.e. skips subdirectory sizes.
-# Handy to find directories with huge files or huge number of small files.
+# List space required by ordinary files in each directory of the current directory tree.
+# Counts only size of flat files on the directory  ignoring sub-directories
+# Handy to find directories with huge file(s) or huge number of small files.
 # With plain du itself one is having hard times to accomplish it
 find . -type d -exec du -sS {} \; | sort -nr | head
