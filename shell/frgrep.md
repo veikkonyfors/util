@@ -1,4 +1,3 @@
-#		/bin/bash
 #----------------------------------------------------------------------------------
 #		© VN/ViWare     12.1.2022           frgrep.sh          Original 20th Century
 #
@@ -47,10 +46,3 @@
 #		not found: Not Found
 #
 #----------------------------------------------------------------------------------
-
-set -f
-str=${1:?"Usage: frgrep string [filename-regexp] "}
-name=${2:-\*}
-
- find . -type f -name ${name}  -exec grep -I -q . {} \; -print \
- | xargs -i{} perl -lne 'print "$ARGV: $_" if /'${str}'/' {}
