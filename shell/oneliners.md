@@ -11,8 +11,9 @@ find . -type f  ! -name '*.swp' -exec grep -I -q . {} \; -print | \
 \# Counts only size of flat files on the directory ignoring sub-directories  
 \# Handy to find directories with huge file(s) or huge number of small files.  
 \# With plain du itself one is having hard times to accomplish it  
-\# 1.2.2022: Unfortunately not all Unix systems have du with -S option available natively. E.g. MacosX, AIX.  
+\# 1.2.2022: Unfortunately not all Unix systems have du with -S option available natively. E.g. MacOSX, AIX.  
 \# Had once upon a time self written command 'dus' doing exactly the same thing.  
 \# It was in java. I might some time compose 'dus' in Python and make it available.  
+\# 3.2.2022: AIX nowadays seem to have -S for separate directories. MacOSX still doesn't have.
 
 find . -type d -exec du -sS {} \; | sort -nr | head
