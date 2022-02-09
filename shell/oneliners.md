@@ -22,4 +22,4 @@ find . -type d -exec du -sS {} &#92;; | sort -nr | head
 \# List space required by ordinary files in each directory of the current directory tree.  
 \# MacOSX version, with bash and perl. A bit more cryptic :-(
 
-IFS=$&apos;\n&apos;; for i in $(find . -type d); do cd $i;find . -maxdepth 1 -type f -exec du {} \; <code>&#124;</code> cut -f 1 -d&apos; &apos; <code>&#124;</code> perl -ne&apos;$s=<>; while(<>) {$s+=$_;} chomp $s; print &quot;$s &quot;&apos;; pwd; cd -; done  <code>&#124;</code> grep ^[0-9] <code>&#124;</code> sort -nr <code>&#124;</code> head
+IFS=$&apos;\n&apos;; for i in $(find . -type d); do cd $i;find . -maxdepth 1 -type f -exec du {} &#92;; <code>&#124;</code> cut -f 1 -d&apos; &apos; <code>&#124;</code> perl -ne&apos;$s=<>; while(<>) {$s+=$_;} chomp $s; print &quot;$s &quot;&apos;; pwd; cd -; done  <code>&#124;</code> grep ^[0-9] <code>&#124;</code> sort -nr <code>&#124;</code> head
