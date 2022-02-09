@@ -15,9 +15,11 @@ find . -type f  ! -name '*.swp' -exec grep -I -q . {} &#92;; -print | \
 \# 1.2.2022: Unfortunately not all Unix systems have du with -S option available natively. E.g. MacOSX, AIX.  
 \# Had once upon a time self written command 'dus' doing exactly the same thing.  
 \# It was in java. I might some time compose 'dus' in Python and make it available.  
-\# 3.2.2022: AIX nowadays seem to have -S for separate directories. MacOSX still doesn't have.
+\# 3.2.2022: AIX nowadays seem to have -S for separate directories. MacOSX still doesn't have.  
+\# 9.2.2022: One could use sudo to be able to scan all directories.  
+\# Even so, some transient directories gives errors, thus directing stderr to /dev/null
 
-find . -type d -exec du -sS {} &#92;; | sort -nr | head
+sudo find . -type d -exec du -sS {} &#92;; 2&gt;/dev/null | sort -nr | head
 
 \# List space required by ordinary files in each directory of the current directory tree.  
 \# MacOSX version, with bash and perl. A bit more cryptic :-(
