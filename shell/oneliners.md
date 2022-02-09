@@ -2,8 +2,9 @@
 \# Finds non-binary flat files from current directory tree with name not ending to .swp  
 \# Pipes each file to xargs running a perl one-liner to print path+line containing ViWare  
 \# Finally skipping lines containing .metadata using grep -v  
+\# Searched string can be a RegExp, e.g. /ViWa..e/ would find ViWare lines as well.
 
-find . -type f  ! -name '*.swp' -exec grep -I -q . {} \; -print | \
+find . -type f  ! -name '*.swp' -exec grep -I -q . {} &#92;; -print | \
   xargs -i{} perl -lne 'print "$ARGV: $_" if /ViWare/' {} | \
   grep -v \.metadata
 
@@ -16,4 +17,4 @@ find . -type f  ! -name '*.swp' -exec grep -I -q . {} \; -print | \
 \# It was in java. I might some time compose 'dus' in Python and make it available.  
 \# 3.2.2022: AIX nowadays seem to have -S for separate directories. MacOSX still doesn't have.
 
-find . -type d -exec du -sS {} \; | sort -nr | head
+find . -type d -exec du -sS {} &#92;; | sort -nr | head
